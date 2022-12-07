@@ -1,0 +1,22 @@
+class Solution {
+    public int[] singleNumber(int[] nums) {
+int[] ans = new int[2];
+      HashMap<Integer , Integer> res = new HashMap<>();
+      for(int i=0;i<nums.length;i++){
+          if(res.containsKey(nums[i])){
+              res.put(nums[i],res.get(nums[i])+1);
+          }
+          else{
+              res.put(nums[i],1);
+          }
+      }
+      int i=0;
+      for(Map.Entry<Integer,Integer> mp : res.entrySet()){
+        if(mp.getValue()==1){
+            ans[i] = mp.getKey();
+            i++;
+        }
+      }
+      return ans;
+    }
+}
